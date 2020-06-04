@@ -15,11 +15,11 @@ resource "aws_db_instance" "postgres" {
     username = "root"
     password = var.postgrespassword
     db_subnet_group_name = aws_db_subnet_group.postgres-subnet.name
-    parameter_group_name = "postgres-parameters"
+    parameter_group_name = aws_db_parameter_group.postgres-parameters.id
     multi_az = "false"
     vpc_security_group_ids = [aws_security_group.allow-postgres.id]
     storage_type = "gp2"
-    backup_retention_period = 0
+    backup_retention_period = 30
     availability_zone = aws_subnet.main-private-1.availability_zone # Preferred AZ
     storage_encrypted = false
     skip_final_snapshot = true
@@ -33,13 +33,13 @@ resource "aws_db_instance" "postgres" {
 #------------------------------------------------------------
 # List of Amazon RDS (PostgreSQL) parameters
 # Link: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.html#Appendix.PostgreSQL.CommonDBATasks.Parameters
-# resource "aws_db_parameter_group" "postgres-parameters" {
-#     name = "postgres-parameters"
-#     family = "postgres12"
-#     description = "PostgreSQL parameter group"
+resource "aws_db_parameter_group" "postgres-parameters" {
+    name = "postgres-parameters"
+    family = "postgres12"
+    description = "PostgreSQL parameter group"
 
-#     # parameter {
-#     #     name = "max_allowed_packet"
-#     #     value = "16777216"
-#     # }
-# }
+    # parameter {
+    #     name = "max_allowed_packet"
+    #     value = "16777216"
+    # }
+}
