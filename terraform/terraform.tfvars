@@ -1,1 +1,1 @@
-public_key_path="/home/saeed/.ssh/xxxxx.pub"
+public_key_path="/home/saeed/.ssh/id_rsa.pub"
