@@ -59,3 +59,28 @@ resource "aws_security_group" "allow-ssh" {
     }
   
 }
+
+resource "aws_security_group" "allow-redshift" {
+    vpc_id = aws_vpc.default.id
+    name = "allow-redshift"
+    description = "allow-redshift"
+
+    ingress {
+        from_port = 5439
+        to_port = 5439
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    egress {
+        from_port = 0
+        to_port = 0
+        protocol = "-1"
+        cidr_blocks = ["0.0.0.0/0"]
+        self = true
+    }
+
+    tags = {
+        Name = "allow-redshift"
+    }
+}

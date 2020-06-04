@@ -95,6 +95,12 @@ resource "aws_db_subnet_group" "postgres-subnet" {
     subnet_ids = [aws_subnet.main-private-1.id, aws_subnet.main-private-2.id]
 }
 
+resource "aws_redshift_subnet_group" "redshift-subnet" {
+    name = "redshift-subnet"
+    description = "Amazon Redshift subnet group"
+    # this subnet group specifies that the Amazon Redshift will be put in a private subnet
+    subnet_ids = [aws_subnet.main-private-1.id, aws_subnet.main-private-2.id]
+}
 
 # Internet Gateway
 resource "aws_internet_gateway" "main-gateway" {

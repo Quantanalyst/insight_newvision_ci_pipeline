@@ -1,24 +1,16 @@
-module "redshift" {
-  source  = "terraform-aws-modules/redshift/aws"
-  version = "~> 2.0"
 
-  cluster_identifier      = "my-cluster"
-  cluster_node_type       = "dc1.large"
-  cluster_number_of_nodes = 1
+# reference: Terraforming and Connecting to an AWS Redshift Cluster
+# link: https://medium.com/faun/terraforming-and-connecting-to-your-aws-redshift-cluster-16f93ddd41cc
 
-  cluster_database_name   = "mydb"
-  cluster_master_username = "mydbuser"
-  cluster_master_password = "mySecretPassw0rd"
-
-  # Group parameters
-  wlm_json_configuration = "[{\"query_concurrency\": 5}]"
-
-  # DB Subnet Group Inputs
-  subnets = ["subnet-123456", "subnet-654321"]
-
-  # IAM Roles
-  cluster_iam_roles = ["arn:aws:iam::225367859851:role/developer"]
-
-//  tags = var.tags
-  vpc_security_group_ids = var.vpc_security_group_ids
+resource "aws_redshift_cluster" "main" {
+  cluster_identifier = "tf-redshift-cluster"
+  database_name      = "newvisionredshift"
+  master_username    = "root"
+  master_password    = "mySecretPassw0rd"
+  node_type          = "dc1.large"
+  cluster_type       = "single-node"
+  cluster_subnet_group_name = aws_redshift_subnet_group.redshift-subnet.name
+  vpc_security_group_ids = [aws_security_group.allow-redshift.id]
+  skip_final_snapshot = true
+  publicly_accessible = "false"
 }
