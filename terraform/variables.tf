@@ -1,3 +1,11 @@
+variable "aws_region" {
+  default = "us-west-2"
+}
+
+variable "postgrespassword" {
+  default = "demopass"
+}
+
 variable "create" {
   description = "Bool to create"
   type        = bool
