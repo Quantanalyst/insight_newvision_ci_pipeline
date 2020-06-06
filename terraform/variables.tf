@@ -6,6 +6,12 @@ variable "postgrespassword" {
   default = "demopass"
 }
 
+variable "public_key_path" {
+  description = "path to public key"
+  type = string
+  # default = "path to something"
+}
+
 # variable "create" {
 #   description = "Bool to create"
 #   type        = bool
