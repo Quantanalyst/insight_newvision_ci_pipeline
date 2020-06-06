@@ -7,7 +7,7 @@ resource "aws_redshift_cluster" "main" {
   database_name      = "newvisionredshift"
   master_username    = "root"
   master_password    = "mySecretPassw0rd"
-  node_type          = "dc1.large"
+  node_type          = "dc2.large"
   cluster_type       = "single-node"
   port               = 5439
   cluster_subnet_group_name = aws_redshift_subnet_group.redshift-subnet.name
