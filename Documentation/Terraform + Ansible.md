@@ -13,7 +13,7 @@ In ```local-exec``` provisioner, I give the provisioner the IP address of the re
 
 The diagram below depicts a scenario where it uses Terraform to provision the infrastructure and Ansible for configuration management all on AWS Cloud.
 
-![alt text](terraform+ansible.png "Terraform+Ansible")
+![alt text](pictures/terraform+ansible.png "Terraform+Ansible")
 
 
 
