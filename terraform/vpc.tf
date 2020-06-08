@@ -44,16 +44,16 @@ resource "aws_subnet" "main-public-2" {
     }
 }
 
-# resource "aws_subnet" "main-public-3" {
-#     vpc_id = aws_vpc.default.id
-#     cidr_block = "10.0.3.0/24"
-#     map_public_ip_on_launch = "true"
-#     availability_zone = "us-west-2c"
+resource "aws_subnet" "main-public-3" {
+    vpc_id = aws_vpc.default.id
+    cidr_block = "10.0.3.0/24"
+    map_public_ip_on_launch = "true"
+    availability_zone = "us-west-2c"
 
-#     tags = {
-#         Name = "main-public-3"
-#     }
-# }
+    tags = {
+        Name = "main-public-3"
+    }
+}
 
 resource "aws_subnet" "main-private-1" {
     vpc_id = aws_vpc.default.id
@@ -98,7 +98,7 @@ resource "aws_db_subnet_group" "postgres-subnet" {
 resource "aws_redshift_subnet_group" "redshift-subnet" {
     name = "redshift-subnet"
     description = "Amazon Redshift subnet group"
-    # this subnet group specifies that the Amazon Redshift will be put in a private subnet
+    # this subnet group specifies that the Amazon Redshift will be put in a public subnet
     subnet_ids = [aws_subnet.main-public-1.id, aws_subnet.main-public-2.id]
 }
 
