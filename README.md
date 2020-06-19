@@ -1,4 +1,6 @@
-# New Vision CI/CD Pipeline
+# New Visions CI/CD Pipeline
+
+<p align="center"> <img src="images/shadowops.png"> </p>
 
 This is the Github repo for my project at Insight datascience. I was a DevOps fellow and the project was a pro bono consulting project for a NY-based education company.
 
