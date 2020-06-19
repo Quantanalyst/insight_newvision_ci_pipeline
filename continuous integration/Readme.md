@@ -6,6 +6,8 @@ In the Github repo settings, you have this option to protect your desired branch
 
 As you can see, on this directory, I have a folder named ```.circleci```, this folder has a YAML file that gives the CircleCI instructions about what to do and where to look for unit testing. 
 
+The other folder is ```tests``` that contains your unit tests. For every unit in your source, you must have a test counterpart in this folder. For example, my code name is ```my_code.R```, so, I must have a unit test named ```test_my_code.R``` in the folder. For unit testing in R, I used ```testthat``` package. 
+
 Below, you can see my CircleCI account and the integration testing result of my pushes to my Github. 
 
 <p align="center"> <img src="images/circleci.png"> </p>
