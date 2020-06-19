@@ -18,6 +18,6 @@ As I mentioned earlier, in order to solve the second challenge, I decided to rep
 
 The architecture for this shadow ephemeral test environment is shown below: 
 
-<p align="center"> <img src="images/Architecturediagram.png" width="500" height="500"> </p>
+<p align="center"> <img src="images/Architecturediagram.png"> </p>
 
 <!-- ![alt text](images/Architecturediagram.png "Project Infrastructure") -->
