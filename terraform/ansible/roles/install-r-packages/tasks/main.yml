@@ -1,0 +1,94 @@
+---
+# copy some files to remote computer
+- name: Copy file with owner and permissions
+  copy:
+    src: ~/Insight fellow Program/DevOps Program/insight_newvision_ci_pipeline/terraform/provisioners/
+    dest: /tmp
+    owner: root
+    group: root
+    mode: '0644'
+
+# copy some files to remote computer
+- name: Copy file with owner and permissions
+  copy:
+    src: ~/Insight fellow Program/DevOps Program/insight_newvision_ci_pipeline/terraform/airflow config/
+    dest: /etc/airflow
+    owner: root
+    group: root
+    mode: '0644'
+    force: yes
+
+# copy some files to remote computer
+- name: Copy file with owner and permissions
+  copy:
+    src: ~/Insight fellow Program/DevOps Program/insight_newvision_ci_pipeline/terraform/dags/
+    dest: /etc/airflow/dags
+    owner: root
+    group: root
+    mode: '0777'
+
+# add a repository that has r-java 3.5
+# - apt_repository:
+#     repo: ppa:marutter/c2d4u3.5
+
+# update repos
+- name: Update apt-get repo and cache
+  apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+
+# install r-base
+- name: Install r language
+  apt:
+    name: r-base-core
+    state: present
+
+# install r-java
+- name: Install r-java
+  apt:
+    name: r-cran-rjava
+    state: present
+
+# set JAVA configuration
+- name: set JAVA config
+  become: yes
+  shell: R CMD javareconf
+  
+# change site-library mode
+- name: change site-library mode
+  become: yes
+  shell: chmod 777 /usr/local/lib/R/site-library
+
+# set JAVA configuration
+- name: set JAVA config
+  become: yes
+  shell: R CMD javareconf
+
+# install R packages
+- name: install R libraies
+  become: yes
+  shell: Rscript /tmp/libraries.R
+
+# copy some files to remote computer
+- name: Copy file with owner and permissions
+  copy:
+    src: ~/Insight fellow Program/DevOps Program/insight_newvision_ci_pipeline/terraform/record/
+    dest: /home/ubuntu
+    owner: root
+    group: root
+    mode: '0666'
+
+
+# initialize airflow db
+- name: reset airflow db
+  become: yes
+  shell: airflow initdb
+
+  
+# running airflow dag: unpause step
+- name: unpause source_code_change_tests dag
+  become: yes
+  shell: airflow unpause source_code_change_tests
+
+# running airflow dag: trigger step
+- name: trigger source_code_change_tests dag
+  become: yes
+  shell: airflow trigger_dag source_code_change_tests

@@ -1,0 +1,3 @@
+roles:
+  - src: idealista.airflow-role
+    version: 1.8.0

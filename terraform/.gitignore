@@ -6,6 +6,8 @@
 *.tfplan
 .terragrunt-cache/
 .terraform/
+terraform.tfvars
+airflow config/
 
 test/fixtures/keys/*
 !test/fixtures/keys/.gitkeep

@@ -1,0 +1,2 @@
+# close connection
+dbDisconnect(conn)
