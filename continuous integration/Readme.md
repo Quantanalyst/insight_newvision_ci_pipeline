@@ -10,11 +10,11 @@ The other folder is ```tests``` that contains your unit tests. For every unit in
 
 Here is how to start after everything is configured. You should push your code changes to  a test branch, it automatically triggers CircleCI to perform unit test. When you ask for a pull request, it looks into the CircleCI results, if they are successful, then under certain conditions, Github allows you to merge the test branch with the protected branch (e.g. master). Below, you can see when Github is waiting for CircleCI to run all the tests. 
 
-<p align="center"> <img src="images/circleci_test.png"> </p>
+<p align="center"> <img src="images/unittest_circleci.png"> </p>
 
 Another picture showing the tests run by CircleCI.
 
-<p align="center"> <img src="images/unittest_circleci.png"> </p>
+<p align="center"> <img src="images/circleci_test.png"> </p>
 
 Finally, take a look at my CircleCI account and the integration testing result of my pushes to Github. 
 
