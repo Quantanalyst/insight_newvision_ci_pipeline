@@ -1,18 +1,8 @@
 # Amazon Redshift
 
-## How to get started:
+Amazon Redshift is the data warehousing resource I used in this project to store my dummy database. Terraform has this resource, so, you only need to configure it. Below, I put the items that I have configured for my Redshift. 
 
-step 1: create an IAM role
-
-In general, for any operation that one AWS resource needs access to another AWS resource, you need to defined a separate IAM role. For this project, you need to give AWS redshift permission to access S3 and load data from there. 
-
-You can create the role directly from the AWS console. In IAM console, create a role for Redshift service (use case: Redshift-Customizable) and attach a permission policy for read-only access to S3 (AmazonS3ReadOnlyAccess). 
-
-You can also, ask terraform to create an IAM role for you. You can find an example of it in ```iamrole.tf``` file in the terraform folder.
-
-step 2: configure Redshift
-
-determine the following parameters:
+Determine the following parameters:
  - cluster_identifier = "tf-redshift-cluster"
  - database_name      = "newvisionredshift"
  - master_username    = "??????"
@@ -26,23 +16,17 @@ determine the following parameters:
  - publicly_accessible = true
  - iam_roles = [aws_iam_role.redshift_role.arn]
 
-step 3: Connect to the sample cluster and run queries
+If you are not sure exactly what type of Redshift you want, you can go to Redshift console and create a dummy Redshift to see what is available and use that setting in your configuration. 
 
-To query databases hosted by your Amazon Redshift cluster, you have two options:
- - Connect to your cluster and run queries on the AWS Management Console with the query editor. If you use the query editor, you don't have to download and set up an SQL client application.
- - Connect to your cluster through an SQL client tool, such as SQL Workbench/J.
+Some settings are common for all terraform resources. You should determine the VPC, the subnet inside the vpc and security group. 
 
-
+Another import thing is IAM role. In general, for any operation that one AWS resource needs access to another AWS resource, you need to define a separate IAM role. For this project, I gave AWS redshift permission to access S3 and load data from there.
 
 
-
-
-Below, you can see the Amazon Redshift Architecture. 
+If you are interested in architecture of Redshift clusters. Below is a picture of a typical Redshift cluster. 
 ![alt text](pictures/Redshift_architecture.png "Amazon Redshift Architecture")
 
 
-
-
-### Source:\
+If you want to learn more about Redshift, one good resource is Amazon itself, below is the reference I used to configure my Redshift. 
 - Getting started with Amazon Redshift [link](https://docs.aws.amazon.com/redshift/latest/gsg/getting-started.html)
 
