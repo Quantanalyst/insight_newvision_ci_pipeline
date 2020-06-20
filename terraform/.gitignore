@@ -7,7 +7,7 @@
 .terragrunt-cache/
 .terraform/
 terraform.tfvars
-airflow config/
+airflow config/airflow.cfg
 
 test/fixtures/keys/*
 !test/fixtures/keys/.gitkeep
