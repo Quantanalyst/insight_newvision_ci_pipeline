@@ -6,9 +6,6 @@
 *.tfplan
 .terragrunt-cache/
 .terraform/
-.circleci
-go.mod
-go.sum
 terraform.tfvars
 airflow config/airflow.cfg
 
