@@ -37,12 +37,10 @@ What is ansible module?
 
 How to get started with Ansible?
  1. add the ip of the remote target node to the list of hosts
-  - ```$ sudo nano /etc/ansible/hosts``` -> add a group, e.g. [test-servers] -> under the group, add the handle@ip address, e.g. ubuntu@50.112.51.89
+  - ```$ sudo nano /etc/ansible/hosts``` -> add a group, e.g. [test-servers] -> under the group, add the handle@ip address, e.g. ```ubuntu@50.112.51.89```
  2. give the remote computer your ssh keys using ```$ ssh-copy-id -i ubuntu@50.112.51.89```
  3. ping your remote computer to make sure it is connected using ```ansible -m ping test-servers```
  4. play your ansible playbook using ```ansible-playbook <playbook_name>```
-
-
 
 
 
